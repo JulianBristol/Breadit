@@ -1,5 +1,5 @@
 
-# Devvit - A Modern Fullstack Reddit Clone 
+# Breadit - A Modern Fullstack Reddit Clone 
 
 Built with the Next.js App Router, TypeScript & Tailwind
 
