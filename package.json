@@ -43,7 +43,6 @@
     "cmdk": "^0.2.0",
     "date-fns": "^2.30.0",
     "editorjs-react-renderer": "^3.5.1",
-    "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.221.0",
@@ -68,6 +67,10 @@
   },
   "devDependencies": {
     "@types/editorjs__header": "^2.6.0",
-    "@types/lodash.debounce": "^4.0.7"
+    "@types/lodash.debounce": "^4.0.7",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "@typescript-eslint/parser": "^5.60.0",
+    "eslint": "^8.43.0",
+    "eslint-plugin-react": "^7.32.2"
   }
 }
