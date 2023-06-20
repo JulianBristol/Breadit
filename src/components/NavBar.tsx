@@ -1,7 +1,7 @@
-import React from "react"
-import Link from "next/link"
-import { Icons } from "./Icons"
-import { buttonVariants } from "./ui/Button"
+import React from "react";
+import Link from "next/link";
+import { Icons } from "./Icons";
+import { buttonVariants } from "./ui/Button";
 
 const NavBar = () => {
 	return (
@@ -18,6 +18,6 @@ const NavBar = () => {
 				<Link href='/sign-in' className={buttonVariants()}>Sign In</Link>
 			</div>
 		</div>
-	)}
+	);};
 
-export default NavBar
+export default NavBar;
