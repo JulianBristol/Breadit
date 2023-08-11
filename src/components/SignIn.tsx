@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icons } from './Icons'
 import Link from 'next/link'
-/* import UserAuthForm from './UserAuthForm' */
+import UserAuthForm from './UserAuthForm'
 
 
 const SignIn = () => {
@@ -13,7 +13,7 @@ const SignIn = () => {
     <p className='text-sm max-w-xs mx-auto'>By continuing, you are setting up a Breadit account and agree to our <span className='text-blue-700 cursor-pointer'>User Agreement</span> and <span className='text-blue-700 cursor-pointer'>Privacy Policy</span></p>
 
     {/* Sign in form */}
-    {/* <UserAuthForm  /> */}
+    <UserAuthForm  />
     <p className='px-8 text-center text-sm text-zinc-700'>New to Breadit?{' '}
     <Link href='/sign-up' className='hover:text-zinc-800 text-sm underline underline-offset-4'>Sign Up</Link>
     </p>
