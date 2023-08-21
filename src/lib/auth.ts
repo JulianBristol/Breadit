@@ -64,7 +64,7 @@ export const authOptions: NextAuthOptions = {
     },
 
     redirect() {
-      return "https://breadit.netlify.app/";
+      return "/";
     }
   },
 };
