@@ -10,7 +10,7 @@ const page = () => {
 					<div className="absolute top-4 right-4">
 						<CloseModal />
 					</div>
-					<SignUp />
+					<SignUp isModal={true} />
 
 				</div>
 			</div>

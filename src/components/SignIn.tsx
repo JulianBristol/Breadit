@@ -1,10 +1,16 @@
-import React from "react";
+"use client";
+
+import React, { FC } from "react";
 import { Icons } from "./Icons";
 import Link from "next/link";
 import UserAuthForm from "./UserAuthForm";
 
 
-const SignIn = () => {
+interface SignInProps {
+	isModal?: boolean;
+  }
+  
+const SignIn: FC<SignInProps> = ({ isModal = false }) => {
 	return (
 		<div className='container mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]'>
 			<div className='flex flex-col space-y-2 text-center'>
@@ -15,7 +21,12 @@ const SignIn = () => {
 				{/* Sign in form */}
 				<UserAuthForm  />
 				<p className='px-8 text-center text-sm text-zinc-700'>New to Breadit?{" "}
-					<Link href='/sign-up' className='hover:text-zinc-800 text-sm underline underline-offset-4'>Sign Up</Link>
+					<Link 
+						href='/sign-up' 
+						className='hover:text-zinc-800 text-sm underline underline-offset-4'
+						replace={isModal}>
+						Sign Up
+					</Link>
 				</p>
 			</div>
 		</div>
