@@ -1,6 +1,6 @@
-import SignIn from "@/components/SignIn";
 import CloseModal from "@/components/CloseModal";
 import React from "react";
+import SignUp from "@/components/SignUp";
 
 const page = () => {
 	return (
@@ -10,7 +10,7 @@ const page = () => {
 					<div className="absolute top-4 right-4">
 						<CloseModal />
 					</div>
-					<SignIn />
+					<SignUp />
 
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
-import React, { FC } from "react";
+import React from "react";
 import { Button } from "./ui/Button";
 import { useRouter } from "next/navigation";
 
