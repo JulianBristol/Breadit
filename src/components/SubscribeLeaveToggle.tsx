@@ -24,10 +24,10 @@ const SubscribeLeaveToggle: FC<SubscribeLeaveToggleProps> = ({
 	const { loginToast } = useCustomToast();
 	const router = useRouter();
 
-	const {mutate: subscribe, isLoading: isSubLoading} = useMutation({
+	const {mutate: subscribe, isLoading: isSubscribing} = useMutation({
 		mutationFn: async () => {
 			const payload: SubscribeToSubredditPayload = {
-				name: subredditId,
+				subredditId,
 			};
 
 			const { data } = await axios.post("/api/subreddit/subscribe", payload);
@@ -54,20 +54,63 @@ const SubscribeLeaveToggle: FC<SubscribeLeaveToggleProps> = ({
 
 			return toast({
 				title: "Subscribed",
-				description: `You are now subscribed to ${subredditName}`,
+				description: `You are now subscribed to r/${subredditName}`,
+				variant: "default"
+			});
+
+		}
+	});
+
+	const {mutate: unsubscribe, isLoading: isUnsubscribing} = useMutation({
+		mutationFn: async () => {
+			const payload: SubscribeToSubredditPayload = {
+				subredditId,
+			};
+
+			const { data } = await axios.post("/api/subreddit/unsubscribe", payload);
+			return data as string;
+		},
+		onError: (err) => {
+			if (err instanceof AxiosError){
+				if (err.response?.status === 401){
+					return loginToast();
+				}
+			}
+
+			return toast({
+				title: "There was a problem",
+				description: "Something went wrong, please try again",
+				variant: "destructive"
+			});
+		},
+
+		onSuccess: () => {
+			startTransition(() => {
+				router.refresh();
+			});
+
+			return toast({
+				title: "Unsubscribed",
+				description: `You are now unsubscribed from r/${subredditName}`,
 				variant: "default"
 			});
 
 		}
 	});
 	return isSubscribed ? (
-		<Button className='w-full mt-1 mb-4'>Leave Community</Button>
+		<Button 
+			isLoading={isUnsubscribing}
+			onClick={() => unsubscribe()}
+			className='w-full mt-1 mb-4'>
+			Leave Community
+		</Button>
 	) : (
 		<Button
-			isLoading={isSubLoading}
+			isLoading={isSubscribing}
 			className='w-full mt-1 mb-4'
 			onClick={() => subscribe()}
-		>Join to Post</Button>
+		>Join to Post
+		</Button>
 	);
 };
 
