@@ -27,7 +27,8 @@ export default function RootLayout({
 			lang="en"
 			className={cn(
 				"bg-white text-slate-900 antialiased light",
-				inter.className
+				/* inter.className, */
+				"__className_0ec1f4"
 			)}
 		>
 			<head>
