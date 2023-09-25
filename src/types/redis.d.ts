@@ -1,10 +1,10 @@
-import { VoteType } from "@prisma/client";
+import { Vote } from "@prisma/client";
 
 export type CachedPost = {
     id: string
     title: string
-    authourUsername: string
+    authorUsername: string
     content: string
-    currentVote: VoteType | null
+    currentVote: Vote["type"] | null
     createdAt: Date
 }

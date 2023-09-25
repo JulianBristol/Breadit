@@ -32,11 +32,11 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
 		setCurrentVote(initialVote);
 	}, [initialVote]);
 
-	const {} = useMutation({
-		mutationFn: async (voteType: VoteType) => {
+	const {mutate: vote} = useMutation({
+		mutationFn: async (type: VoteType) => {
 			const payload: PostVoteRequest = {
 				postId,
-				voteType
+				voteType: type
 			};
 
 			await axios.patch("/api/subreddit/post/vote", payload);
@@ -49,9 +49,7 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
 				size='sm'
 				variant="ghost"
 				aria-label="upvote"
-				onClick={() => {
-					console.log("upvote");
-				}}>
+				onClick={() => vote("UP")}>
 				<ArrowBigUp className={cn("h-5 w-5 text-zinc-700", {
 					"text-emerald-500 fill-emerald-500": currentVote === "UP",
 				})} />
@@ -63,9 +61,7 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
 				size='sm'
 				variant="ghost"
 				aria-label="downvote"
-				onClick={() => {
-					console.log("downvote");
-				}}>
+				onClick={() => vote("DOWN")}>
 				<ArrowBigDown className={cn("h-5 w-5 text-zinc-700", {
 					"text-red-500 fill-red-500": currentVote === "DOWN",
 				})} />
