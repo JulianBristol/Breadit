@@ -50,7 +50,7 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
 		onError: () => {
 			return toast({
 				title: "Something went wrong",
-				description: "Your post was not published. Please try again later",
+				description: "Your post was not published. Make sure you are signed in and/or subscribed the subreddit",
 				variant: "destructive"
 			});
 		},
