@@ -16,7 +16,6 @@ const GeneralFeed = async () => {
 		},
 		take: INFINITE_SCROLLING_PAGINATION_RESULTS,
 	});
-	console.log(posts);
 	return <PostFeed initialPosts={posts} />;
 };
 
