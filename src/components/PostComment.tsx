@@ -1,9 +1,15 @@
 "use client";
 
-import React, { FC, useRef } from "react";
+import React, { FC, useRef, useState } from "react";
 import UserAvatar from "./UserAvatar";
 import { Comment, CommentVote, User } from "@prisma/client";
 import { formatTimeToNow } from "@/lib/utils";
+import CommentsVotes from "./CommentVotes";
+import { Button } from "./ui/Button";
+import { MessageSquare } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { Label } from "./ui/Label";
 
 type ExtendedComment = Comment & {
     votes: CommentVote[]
@@ -12,11 +18,17 @@ type ExtendedComment = Comment & {
 
 interface PostCommentProps {
     comment: ExtendedComment
+	votesAmt: number
+	currentVote: CommentVote | undefined
+	postId: string
 }
 
-const PostComment: FC<PostCommentProps> = ({ comment }) => {
+const PostComment: FC<PostCommentProps> = ({ comment, votesAmt, currentVote, postId }) => {
 
 	const commentRef = useRef<HTMLDivElement>(null);
+	const router = useRouter();
+	const { data: session } = useSession();
+	const [isReplying, setIsReplying] = useState<boolean>(false);
 
 	return (
 		<div ref={commentRef} className="flex flex-col">
@@ -40,7 +52,28 @@ const PostComment: FC<PostCommentProps> = ({ comment }) => {
 			</div> 
 			<p className="text-sm mt-2 text-zinc-900">{comment.text}</p>
 
-            
+			<div className="flex gap-2 items-center">
+				<CommentsVotes commentId={comment.id} initialVotesAmt={votesAmt} initialVote={currentVote} />
+
+				<Button
+					variant='ghost'
+					size="xs"
+					onClick={() => {
+						if(!session) return router.push("/sign-in");
+						setIsReplying(true);
+					}}
+				>
+					<MessageSquare className="h-4 w-4 mr-1.5" />
+					Reply
+				</Button>
+
+				{isReplying ? (
+					<div className="grid w-full gap-1.5">
+						<Label>Your comment</Label>
+					</div>
+				) : null }
+
+			</div>
 		</div>
 	);};
 
