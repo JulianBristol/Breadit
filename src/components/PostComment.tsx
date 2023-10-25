@@ -14,6 +14,7 @@ import { Textarea } from "./ui/Textarea";
 import { useMutation } from "@tanstack/react-query";
 import { CommentRequest } from "@/lib/validators/comment";
 import axios from "axios";
+import { toast } from "@/hooks/use-toast";
 
 type ExtendedComment = Comment & {
     votes: CommentVote[]
@@ -45,6 +46,17 @@ const PostComment: FC<PostCommentProps> = ({ comment, votesAmt, currentVote, pos
 
 			const {data} = await axios.patch("/api/subreddit/post/comment", payload);
 			return data;
+		},
+		onError: () => {
+			return toast({
+				title: "Somthing went wrong...",
+				description: "Comment wasn't posted successfully. Please try again",
+				variant: "destructive",
+			});
+		},
+		onSuccess: () => {
+			router.refresh();
+			setIsReplying(false);
 		},
 	});
 
