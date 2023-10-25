@@ -27,7 +27,7 @@ const SubscribeLeaveToggle: FC<SubscribeLeaveToggleProps> = ({
 	const {mutate: subscribe, isLoading: isSubscribing} = useMutation({
 		mutationFn: async () => {
 			const payload: SubscribeToSubredditPayload = {
-				subredditId,
+				name: subredditId,
 			};
 
 			const { data } = await axios.post("/api/subreddit/subscribe", payload);
@@ -64,7 +64,7 @@ const SubscribeLeaveToggle: FC<SubscribeLeaveToggleProps> = ({
 	const {mutate: unsubscribe, isLoading: isUnsubscribing} = useMutation({
 		mutationFn: async () => {
 			const payload: SubscribeToSubredditPayload = {
-				subredditId,
+				name: subredditId,
 			};
 
 			const { data } = await axios.post("/api/subreddit/unsubscribe", payload);
