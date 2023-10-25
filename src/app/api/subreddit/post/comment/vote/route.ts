@@ -46,6 +46,8 @@ export async function PATCH(req: Request){
 					}
 				});
 			}
+
+			return new Response("OK");
 		}
 
 		// if no existing vote, create a new vote
