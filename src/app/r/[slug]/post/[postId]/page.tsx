@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 import { redis } from "@/lib/redis";
 import { formatTimeToNow } from "@/lib/utils";
 import { CachedPost } from "@/types/redis";
-import { Post, Vote } from "@prisma/client";
+import { Post, User, Vote } from "@prisma/client";
 import { ArrowBigDown, ArrowBigUp, Loader, Loader2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
