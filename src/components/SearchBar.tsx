@@ -9,11 +9,7 @@ import { useRouter } from "next/navigation";
 import { Users } from "lucide-react";
 import debounce from "lodash.debounce";
 
-interface SearchBarProps {
-  
-}
-
-const SearchBar: FC<SearchBarProps> = ({}) => {
+const SearchBar = () => {
 	const [input, setInput] = useState<string>("");
 
 	const {
@@ -33,9 +29,9 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
 		enabled: false,
 	});
 
-	const request = debounce(() => {
-		refetch();
-	});
+	const request =  debounce(async () => {
+		await refetch();
+	}, 300);
 	
 	const debounceRequest = useCallback(() => {
 		request();
