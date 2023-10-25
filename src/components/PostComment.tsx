@@ -43,7 +43,7 @@ const PostComment: FC<PostCommentProps> = ({ comment, votesAmt, currentVote, pos
 				replyToId,
 			};
 
-			const {data} = await axios.patch("/api/subreddit/post/comment");
+			const {data} = await axios.patch("/api/subreddit/post/comment", payload);
 			return data;
 		},
 	});
@@ -86,7 +86,6 @@ const PostComment: FC<PostCommentProps> = ({ comment, votesAmt, currentVote, pos
 				</Button>
 
 				{isReplying ? (
-					
 					<div className='grid w-full gap-1.5'>
 						<Label htmlFor="comment">Your Comment</Label>
 						<div className="mt-2">
