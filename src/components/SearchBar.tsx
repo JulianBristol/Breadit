@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "./ui/Command";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -17,7 +17,6 @@ const SearchBar = () => {
 		data: queryResults,
 		refetch,
 		isFetched,
-		isFetching
 	} = useQuery({
 		queryFn: async () => {
 			if(!input) return [];
@@ -40,7 +39,7 @@ const SearchBar = () => {
 
 	const router = useRouter();
 	const commandRef = useRef<HTMLDivElement>(null);
-	const pathname = usePathname()
+	const pathname = usePathname();
 
 	useOnClickOutside(commandRef, () => {
 		setInput("");
