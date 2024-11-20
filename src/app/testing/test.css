@@ -1,0 +1,29 @@
+.words {
+    background: #FFF;
+    height: 250px;
+    overflow: auto;
+    scrollbar-color: red orange;
+    scrollbar-width: thin;
+    mix-blend-mode: color;
+  }
+  .words::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  .words::-webkit-scrollbar-track {
+    background: #dbdbdb57;
+    border-radius: 5px;       /* roundness of the scroll bar */
+  }
+  
+  .words::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+  }
+  .test {
+    background: url(https://storage.needpix.com/rsynced_images/bokeh-1488392591cjN.jpg);
+    height: 300px;
+    overflow: none;
+    scrollbar-color: red orange;
+    scrollbar-width: thin;
+    padding: 5px;
+}
