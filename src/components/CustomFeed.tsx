@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import PostFeed from "./PostFeed";
 import React from "react";
 import { getAuthSession } from "@/lib/auth";
-import GeneralFeed from "./GeneralFeed";
+/* import GeneralFeed from "./GeneralFeed";*/
 
 const CustomFeed = async () => {
 	const session = await getAuthSession();
